@@ -1,0 +1,144 @@
+@import "../../constants.scss";
+@import "../../mixins.scss";
+
+.preview{
+  .img-wrapper{
+    img{
+      height:270px;
+      width: 180px;
+    }
+  }
+  hr{
+    width:99%;
+    border-top: 4px solid nth($default-color,1);
+  }
+  margin:0 auto;
+  img{
+    margin:0 auto;
+  }
+  .controls{
+    margin-bottom:10px;
+    height:60px;
+      border-bottom: 4px solid nth($default-color, 1);
+    @media screen and (max-width: 575px) {
+      border-top: 4px solid nth($default-color, 1);
+      border-bottom: 4px solid nth($default-color, 1);
+    }
+    
+    div{
+      width: 30px;
+      height:30px;
+      border-radius:50%;
+      text-align: center;
+    }
+    .btn-add-to-list{
+      &:hover {
+      @include tooltip("Add To List", none, 50px, nowrap);
+        &::before{
+          position: absolute;
+          font-size: 1rem;
+        }
+      }
+    }
+    .btn-thumbs-up{
+      &:hover {
+        @include tooltip("like", none, 50px, nowrap);
+        &::before{
+          position: absolute;
+          font-size:1rem;
+          }
+        }
+    }
+      .btn-thumbs-down{
+         &:hover {
+            @include tooltip("dislike", none, 50px, nowrap);
+            &::before{
+              position: absolute;
+              font-size:1rem;
+            }
+         }
+      }
+      .btn-delete{
+         &:hover {
+            @include tooltip("delete item", none, 50px, nowrap);
+            &::before{
+              position: absolute;
+              font-size:1rem;
+            }
+         }
+      }
+      .btn-back{
+         &:hover {
+            @include tooltip("close this preview", none, 50px, nowrap);
+            &::before{
+              position: absolute;
+              font-size:1rem;
+            }
+         }
+      }
+      .rating{
+        height:50px;
+      }
+  }
+  .tag{
+    padding: 0px 5px;
+    margin-bottom:2px;
+    border-radius:40px;
+    background-color:orange;
+    margin-left: 5px;
+  }
+  
+  .add-tag{
+    color:black;
+    border:none;
+    background: none;
+    padding: 0px 5px;
+    width:120px;
+    &::placeholder { color: black;}
+    &:focus {outline:0;}
+  }
+  #desc-box{
+    max-height:200px;
+    overflow-y: auto;
+  }
+  .actor-thumb{
+
+    margin: 0 auto;
+    
+    .img-container{
+      border:2px solid white;
+      box-shadow: $shadow;
+      width:120px;
+      height: 150px;
+      overflow: hidden;
+      border-radius: 5px;
+      img{
+        position:relative;
+        bottom:10px;
+        width:100%;
+      }
+    }
+  }
+  .notes-area{
+    width: 100%;
+    margin-top: 15px;
+    background-color: rgb(221, 221, 221);
+    border-radius: 5px;
+    border: none;
+    border-bottom: 4px solid rgb(252, 182, 83);
+    margin-bottom: 0px;
+    height: 131px;
+  }
+  .selected{
+    border-radius:10px;
+    background-color: #ddd;
+  }
+  .watched{
+    border-radius:10px;
+    background-color: orange;
+  }
+  .season-button{
+      padding: 5px;
+      cursor: pointer;
+  }
+}

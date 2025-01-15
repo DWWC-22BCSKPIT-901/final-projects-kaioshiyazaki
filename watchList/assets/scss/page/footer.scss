@@ -1,0 +1,35 @@
+.page-footer{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 95vh;
+  padding-top:30px;
+  color:white;
+  background-color: black;
+  a{
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .outwardline{
+    transition: all 0.5s;
+    hr{
+      border-top: 2px solid white;
+      position: relative;
+      bottom: 20px;
+      width: 0%;
+      transition: all 0.5s;
+    }
+    &:hover{
+      transform:scale(1.1);
+      hr{
+        width: 100%;
+      }
+    }
+  }
+  i{
+    transition: all 0.2s;
+    &:hover{
+      transform:scale(1.2);
+    }
+  }
+}

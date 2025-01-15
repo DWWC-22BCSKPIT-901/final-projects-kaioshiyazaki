@@ -1,0 +1,80 @@
+/*************classes for colouring ************/
+.card {
+  margin: 25px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5), -1px -1px 5px rgba(0, 0, 0, 0.5);
+  height: 341px;
+  max-width: 250px;
+  width: 80%;
+  padding: 7px;
+  overflow: hidden;
+}
+.card .card-inner {
+  height: 100%;
+  width: 100%;
+}
+.card .card-inner .card-bg {
+  background-image: url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/dCtFvscYcXQKTNvyyaQr2g2UacJ.jpg);
+  background-size: 100% 100%;
+  z-index: 5;
+  height: 100%;
+  width: 100%;
+}
+.card .card-inner .card-icon {
+  top: 0%;
+  left: 90%;
+  position: absolute;
+}
+.card .card-inner .card-info {
+  border-top: 4px solid orange;
+  height: 341px;
+  width: 100%;
+  left: 0;
+  z-index: 20;
+  position: absolute;
+  bottom: -110%;
+  background-color: white;
+  transition: bottom 1s;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.card .card-inner .card-info .year {
+  font-size: 0.7em;
+}
+.card .card-inner .card-info .btn-more-info {
+  background-color: orange;
+  width: 100%;
+}
+.card .card-inner .card-info .btn-more-info:hover {
+  background-color: #ffc04d;
+}
+.card .card-inner .card-info .btn-actions {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.card .card-inner:hover .card-info {
+  bottom: 0px;
+}
+
+.info-card {
+  overflow-y: auto;
+  border: 5px solid white;
+  height: 50vh;
+  width: 95%;
+  max-width: 350px;
+}
+@media screen and (max-width: 575px) {
+  .info-card {
+    height: 80vh;
+    border-bottom: 4px solid #fcb653;
+  }
+}
+.info-card hr {
+  margin: 0px;
+  width: 99%;
+  border-top: 2px solid #fcb653;
+}
+
+/*# sourceMappingURL=moviecard.css.map */

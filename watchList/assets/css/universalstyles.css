@@ -1,0 +1,56 @@
+.btn-default {
+  position: relative;
+  background-color: #fcb653;
+}
+.btn-default:hover {
+  background-color: #e2a34a;
+}
+
+/* Styles for the material design style text-boxes */
+.input-box-wrapper {
+  position: relative;
+}
+.input-box-wrapper label {
+  position: absolute;
+  left: 5%;
+  bottom: 0px;
+  pointer-events: none;
+}
+
+/* classes for animating collapsable menus */
+.right {
+  transform: rotate(0deg);
+}
+
+.down {
+  transform: rotate(90deg);
+}
+
+/* customise select boxes */
+select {
+  border: none;
+  border-bottom: 2px solid #fcb653;
+}
+select option {
+  background-color: #eee;
+}
+select option:checked {
+  background-color: #fcb653;
+}
+
+/*Tag Formatting*/
+.collection-tag {
+  background-color: #ddd;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding: 0px 5px;
+  transition: background-color 1s;
+}
+.collection-tag:hover {
+  background-color: #fcb653;
+}
+.collection-tag:active {
+  background-color: #e2a34a;
+}
+
+/*# sourceMappingURL=universalstyles.css.map */

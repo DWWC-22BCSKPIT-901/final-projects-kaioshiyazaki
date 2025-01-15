@@ -1,0 +1,58 @@
+@import "../constants.scss";
+@import "../mixins.scss";
+
+
+.navbar{
+  background-color:  nth($default-color,2);
+  box-shadow: $shadow;
+}
+
+
+
+$colorlist:(
+  add: $default-color,
+  movie: $movie-color,
+  tv: $tv-color,
+  person: $game-color,
+  book: $book-color
+);
+
+$toolTips:(
+  add: "click here to add a new item",
+  movie: "Add Movie",
+  tv: "Add Tv Show",
+  person: "Search Actors",
+);
+
+$typelist: add, movie, tv, person;
+$zpos: -5;
+
+
+@each $type in $typelist{
+  ##{$type}{
+    position:absolute;
+    top:7px;
+    right: 5%;
+    z-index: $zpos;
+    display: none;
+    @if $type == add {
+      box-shadow: $shadow;
+      z-index:10;
+      display:flex;
+    }
+    background-color: nth($default-color,1);
+    &:hover{
+      background-color: nth($default-color,2);
+      @include tooltip(map-get($toolTips,$type), 50px, 0px, nowrap);
+    }
+    i{
+      font-size:1.5rem;
+    }
+  }
+}
+
+.nav-button{
+  border-radius:50%;
+  width:40px;
+  height:40px;
+}

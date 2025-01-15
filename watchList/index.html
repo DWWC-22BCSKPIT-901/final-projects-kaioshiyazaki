@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Watch List</title>
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Montserrat:500i" 
+    rel="stylesheet">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <!-- bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+    <!-- custom styles -->
+    <link href="./assets/css/main.css" rel="stylesheet">
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+</head>
+<body>
+    <main id="app">
+        <!-- navbar starts here -->
+        <nav class="navbar fixed-top d-flex py-0">
+            <div class="navbar-brand d-flex">
+                <div class="mr-3 align-self-center">
+                    <img id= "toggle-menu" src="https://cdn4.iconfinder.com/data/icons/tupix-1/30/list-512.png" 
+                    width="40" height="40" class="d-inline-block align-top" alt="hamburger icon">
+                </div>
+                <div class="d-flex heading align-items-center">
+                    <h3 class="heading my-0">Watch List</h3>
+                </div>    
+            </div>
+            <div class="d-flex">
+                <div id="add" class="icon nav-button ml-2 d-flex justify-content-center align-items-center">
+                    <i class="fas fa-plus my-0"></i>
+                </div>
+                <div id="movie" class="icon nav-button ml-2 d-flex justify-content-center align-items-center d-none">
+                    <i class="fas fa-film align-self-center"></i>
+                </div>
+                <div id="tv" class="icon nav-button ml-2 d-flex justify-content-center align-items-center d-none">
+                    <i class="fas fa-tv align-self-center"></i>
+                </div>
+                <div id="person" class="icon nav-button ml-2 d-flex justify-content-center align-items-center d-none">
+                    <i class="fas fa-users align-self-center"></i>
+                </div>
+            </div>
+        </nav>
+        <!-- navbar ends here -->
+        <!-- Drawer Menu Starts Here --> 
+        <aside id="menu">
+            <div>
+            <h5 class="sub-head heading"><strong>Filter By Type:</strong></h5>
+                <ul id="filter-menu" class="menu-list">
+                    <li onclick="performFilter('type','all')"><i class="fas fa-asterisk mr-2 w-30"></i><span>All</span></li>
+                    <li onclick="performFilter('type','movie')"><i class="fas fa-film m-1 w-30"></i> <span>Movies</span> </li>
+                    <li onclick="performFilter('type','tv')"><i class="fas fa-tv mr-1 w-30"></i> <span>TV </span></li>
+                </ul>
+                <hr />
+                <h5 class="sub-head heading"><strong>Filter by Tags:</strong></h5>
+                <ul id="category-list" class="category-list menu-list">
+                </ul>
+                <hr />
+                <div>
+                <h5 class="sub-head heading"><strong>Browse:</strong></h5>
+                <ul id="category-list" class="category-list menu-list">
+                    <li onclick="recommendations.recommendationsList({type:'movie', recType:'cinema now', page:1})">In Theatres Now</li>
+                    <li onclick="recommendations.recommendationsList({type:'movie', recType:'top movies', page:1})">Top Rated Movies</li>
+                    <li onclick="recommendations.recommendationsList({type:'tv', recType:'top tv',page:1} )">Top Rated TV Shows</li>
+                    <li onclick="recommendations.recommendationsList({type:'tv', recType:'tv now', page:1})">On TV Now</li>
+                </ul>
+                <hr />
+                </div>
+                <div id="browse-genres">
+                <h5 class="sub-head heading"><strong>Browse by Genre:</strong></h5>
+                <ul id="browse-genres" class="category-list menu-list">
+                    <li id="movie-by-genre">Movies </li>
+                    <p id="movie-genre-search" class="mx-0 px-4">
+                        <select id="movie-genres-list">
+                            <option>select a genre</option>
+                        </select>
+                    </p>    
+                    <li id="tv-by-genre">TV</li>
+                    <p id="tv-genre-search" class="mx-0 px-4">
+                        <select id="tv-genres-list" class="w-90">
+                            <option>select a genre</option>
+                        </select>
+                    </p>
+                </ul>
+                <hr />
+                </div>
+                <p class="sub-head heading"><strong>Other Options:</strong></p>
+                <ul class = "category-list menu-list">
+                    <li onclick="makePopUp('help')">About Watch List</li>
+                    <li onclick="watchHistory.render()">My Watch History</li>
+                    <li onclick="makePopUp('reset')">Delete Watch List</li>
+                </ul>
+            </div>
+        </aside>
+        <!-- End of Drawer Menu Menu Starts Here -->
+        <!-- Watch List Main Container Starts Here -->
+        <article class="mx-auto">
+            <div id="watch-list" class="d-flex flex-wrap justify-content-center px-2"></div>  
+        </article>
+        <footer class="page-footer">
+            <div class="row mx-0 d-flex justify-content-center">
+                <div class="text-center">                    
+                    <div class="d-flex flex-wrap justify-content-center">
+                    <p><small>All movie information is provided by: </small></p>
+                        <div class="outwardline ml-4">
+                            <p><small><a href="https://www.themoviedb.org/" target="_blank">https://www.themoviedb.org/</a></small></p>
+                            <hr>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Watch List Main Container Ends Here -->
+        <div id="maxReq-Waring" class=" d-none alert alert-warning" role="alert" onclick="warningDismiss()">
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <main class="obscure justify-content-center">
+        <div id="add-or-edit-container" class="active">
+        </div>
+    </main>  
+    <!-- End Modal -->
+    <!-- polyfill to support old browsers-->
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- bootstrap scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" 
+    integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    
+    <!-- start of custom scripts -->
+    <!-- Custom Scripts: Utilities-->
+    <script type="text/javascript" src="./assets/scripts/utilities/utilityFunctions.js"></script>
+    <!-- Custom Scripts: Data Structures--> 
+    <script type="text/javascript" src="./assets/scripts/data-structures/classes.js"></script>
+    <!-- Custom Scripts: Models -->
+    <script type="text/javascript" src="./assets/scripts/models/watchList.js"></script>
+    <!-- Custom Scripts: API Scripts-->
+    <script type="text/javascript" src="./assets/scripts/api/tmdb.js"></script> 
+    <!-- Custom Scripts: Views and DOM Manipulation --> 
+    <script type="text/javascript" src="./assets/scripts/dom/menu.js"></script>
+    <script type="text/javascript" src="./assets/scripts/dom/popup.js"></script>
+    <script type="text/javascript" src="./assets/scripts/dom/search.js"></script>
+    <script type="text/javascript" src="./assets/scripts/dom/drawermenu.js"></script>
+    <script type="text/javascript" src="./assets/scripts/dom/recommendations.js"></script>
+    <script type="text/javascript" src="./assets/scripts/dom/warning.js"></script>
+    <script type="text/javascript" src="./assets/scripts/dom/watchHistory.js"></script>
+    <script type="text/javascript" src="./assets/scripts/dom/watchListDom.js"></script>
+    <!-- End of Custom Scripts -->
+    <!-- Transpiled and minified script for older browsers - doesn't fully work-->
+    <!-- <script type="text/javascript" src="./assets/scripts/code.min.js"></script> -->
+    
+    
+
+</body>
+</html>

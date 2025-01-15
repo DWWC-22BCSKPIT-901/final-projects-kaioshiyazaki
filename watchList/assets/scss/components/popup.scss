@@ -1,0 +1,53 @@
+@import "../constants.scss";
+@import "./popup-submenus/preview.scss";
+@import "./popup-submenus/search.scss";
+@import "./popup-submenus/manage-tags.scss";
+
+.obscure{
+  display:none;
+  position:fixed;
+  top: 0;
+  z-index: 5000;
+  min-height: 100vh;
+  width:100vw;
+  background-color:rgba(0,0,0,0.5);
+  #add-or-edit-container{
+    border: 4px solid nth($default-color,1);
+    border-radius:5px;
+    margin: auto auto;
+    position: relative;
+    top: 30px;
+    width: 95vw;
+    max-width: 600px;
+    max-height:90vh;
+    min-height: 50vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: white;
+    box-shadow:2px 2px 2px rgba(39, 26, 26, 0.7);
+    padding-top:5px;
+    #add-collection{
+      padding: 0;
+      border:none;
+      border-bottom: 1px solid black;
+    }
+    #add-new-label{
+      pointer-events: none;
+      position:absolute;
+    }
+  }
+}
+
+#background{
+  position: absolute;
+  width:100vw;
+  height:100vh;
+  background-color:
+    #444444;
+}
+
+
+
+
+
+
